@@ -1,52 +1,12 @@
-# service-test
+### Live Bar Sandbox
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+Just a sandbox to work through some ideas:
 
-## Prerequisites
+1. A main service called "live bar" and corresponding component (live-bar/x-container)
+2. 2 "sub services" Chat, Notifictions
 
-You will need the following things properly installed on your computer.
+The idea is that the "live bar" component is a dynamic view handler for real-time activity. It acts almost like the "dock" on a mac. Applications can register to be in the livebar by passing through the name and icon. When the individual apps in the livebar have updates they can update their "badgeCount" in the livebar.
 
-* [Git](https://git-scm.com/)
-* [Node.js](https://nodejs.org/) (with NPM)
-* [Bower](https://bower.io/)
-* [Ember CLI](https://ember-cli.com/)
-* [PhantomJS](http://phantomjs.org/)
+Each "sub-service" contains a corresponding app. When any app is clicked in the live bar, the live bar service sets the selected app to be the "active app". It then renders the active app's corresponding component dynamically and passes any args along with it.
 
-## Installation
-
-* `git clone <repository-url>` this repository
-* `cd service-test`
-* `npm install`
-* `bower install`
-
-## Running / Development
-
-* `ember serve`
-* Visit your app at [http://localhost:4200](http://localhost:4200).
-
-### Code Generators
-
-Make use of the many generators for code, try `ember help generate` for more details
-
-### Running Tests
-
-* `ember test`
-* `ember test --server`
-
-### Building
-
-* `ember build` (development)
-* `ember build --environment production` (production)
-
-### Deploying
-
-Specify what it takes to deploy your app.
-
-## Further Reading / Useful Links
-
-* [ember.js](http://emberjs.com/)
-* [ember-cli](https://ember-cli.com/)
-* Development Browser Extensions
-  * [ember inspector for chrome](https://chrome.google.com/webstore/detail/ember-inspector/bmdblncegkenkacieihfhpjfppoconhi)
-  * [ember inspector for firefox](https://addons.mozilla.org/en-US/firefox/addon/ember-inspector/)
+Finally, in order for each "app" to register with the live-bar, each app must have a "register" method. Registering each app in the live-bar instance-initializer is how we can ensure that certain apps are registered from the get go.

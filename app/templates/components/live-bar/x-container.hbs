@@ -1,0 +1,14 @@
+<h2>Apps</h2>
+<ul>
+  {{#each liveBar.apps as |app|}}
+    <li {{action "setActiveApp" app}}>
+      {{app.name}} ({{app.badgeCount}})
+    </li>
+  {{else}}
+    <li>No apps...</li>
+  {{/each}}
+</ul>
+
+{{#if liveBar.activeApp}}
+  {{component liveBar.activeApp.component args=liveBar.activeApp.args}}
+{{/if}}
